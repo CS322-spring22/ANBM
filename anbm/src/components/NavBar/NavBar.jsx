@@ -39,13 +39,16 @@ export default function NavBar() {
   const [query, setQuery] = useState([]);
 
 
+  const url = useRef();
 
   const submitHandler = async (e) => {
     e.preventDefault();
     const newPost = {
       userId: user._id,
       desc: desc.current.value,
+      img: url.current.value,
     };
+    /*
     if (file) {
       const data = new FormData();
       const fileName = Date.now() + file.name;
@@ -56,6 +59,7 @@ export default function NavBar() {
         await axiosInstance.post("/upload", data);
       } catch (err) {}
     }
+    */
 
     try {
       await axiosInstance.post("/posts", newPost);
@@ -123,20 +127,19 @@ export default function NavBar() {
                   className="shareInput"
                   ref={desc}
                 />
+
+                <input
+                  placeholder={"Youtube url"}
+                  className="urlInput"
+                  ref={url}
+                />
               </div>
               <form className="shareBottom" onSubmit={submitHandler}>
                 <li className="shareOptions">
-                  <label htmlFor="file" className="shareOption">
+                  <li className="shareOption">
                     <MusicNote htmlColor="Red" className="shareIcon" />
                     <span className="shareOptionText">Name</span>
-                    <input
-                      style={{ display: "none" }}
-                      type="file"
-                      id="file"
-                      accept=".png,.jpeg,.jpg"
-                      onChange={(e) => setFile(e.target.files[0])}
-                    />
-                  </label>
+                  </li>
                   <li className="shareOption">
                     <Person htmlColor="DodgerBlue" className="shareIcon" />
                     <span className="shareOptionText">Artist</span>

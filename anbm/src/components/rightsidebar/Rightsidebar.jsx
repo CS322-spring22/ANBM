@@ -1,5 +1,8 @@
 import "./rightsidebar.css";
-import { FeaturedPlayList } from "@material-ui/icons";
+import {
+  FeaturedPlayList,
+  StayCurrentPortraitRounded,
+} from "@material-ui/icons";
 import { Face } from "@material-ui/icons";
 import { MusicNote } from "@material-ui/icons";
 import { TrendingUp } from "@material-ui/icons";
@@ -15,20 +18,20 @@ import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 
 export default function Rightsidebar({ user }) {
-    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-    const [friends, setFriends] = useState([]);
-    const {user:currentUser, dispatch} = useContext(AuthContext);
-    const [followed, setFollowed] = useState(
-        currentUser.followings.includes(user?._id)
-      );
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const [friends, setFriends] = useState([]);
+  const { user: currentUser, dispatch } = useContext(AuthContext);
+  const [followed, setFollowed] = useState(false);
 
-   
-
+  useEffect(() => {
+    setFollowed(currentUser.followings.includes(user?._id));
+  }, [currentUser._id, user?._id]);
+  /*
   useEffect(() => {
     const getFriends = async () => {
       try {
         const friendList = await axiosInstance.get(
-          "/users/friends/" + user._id
+          "/friend/:userId" + user._id
         );
         setFriends(friendList.data);
       } catch (err) {
@@ -37,7 +40,7 @@ export default function Rightsidebar({ user }) {
     };
     getFriends();
   }, [user]);
-
+*/
   const handleClick = async () => {
     try {
       if (followed) {
@@ -91,11 +94,11 @@ export default function Rightsidebar({ user }) {
     );
   };
 
-    const ProfileRightbar = () => {
-        return (
-            <>
-            {user.username !== currentUser.username && (
-            <button className="rightbarFollowButton" onClick={handleClick}>
+  const ProfileRightbar = () => {
+    return (
+      <>
+        {user.username !== currentUser.username && (
+          <button className="rightbarFollowButton" onClick={handleClick}>
             {followed ? "Unfollow" : "Follow"}
             {followed ? <Remove /> : <Add />}
           </button>
@@ -140,7 +143,6 @@ export default function Rightsidebar({ user }) {
         </div>
         <h4 className="rightsidebarTitle">Top Songs</h4>
         <div className="rightsidebarFollowings">
-          
           <div className="rightsidebarFollowing">
             <img
               src={`${PF}profile/photo1.jpg`}

@@ -1,125 +1,133 @@
-.post{
-    widows: 100%;
-    border-radius: 10px;
-    box-shadow: 13px -12px 14px -10px rgba(0,0,0,0.5);
-    -webkit-box-shadow: 13px -12px 14px -10px rgba(0,0,0,0.5);
-    -moz-box-shadow: 13px -12px 14px -10px rgba(0,0,0,0.5);
-    margin: 30px 0;
-    background-image: linear-gradient(to right, rgb(47, 253, 47), rgb(71, 157, 214));
+.post {
+  widows: 100%;
+  border-radius: 10px;
+  box-shadow: 13px -12px 14px -10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 13px -12px 14px -10px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 13px -12px 14px -10px rgba(0, 0, 0, 0.5);
+  margin: 30px 0;
+  background-image: linear-gradient(
+    to right,
+    rgb(47, 253, 47),
+    rgb(71, 157, 214)
+  );
 }
 
-.postWrapper{
-    padding: 20px;
-    display: flex;
+.postWrapper {
+  padding: 20px;
+  display: flex;
 }
 
-.postRight{
-    display: flex;
-    flex: 3;
-    flex-direction: column;
-    align-items: center;;
-    margin-right: 50px;
+.postRight {
+  display: flex;
+  flex: 3;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 50px;
 }
 
-.postRightBottom{
-    display: flex;
-    width: 100%;
-    justify-content: space-evenly;
-    margin-top: 10px;
+.postRightBottom {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  margin-top: 10px;
 }
 
-.albumImg{
-    width: 400px;
-    height: 400px;
-    object-fit: contain;
+.albumImg {
+  width: 400px;
+  height: 400px;
+  object-fit: contain;
 }
 
-.interactButton{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
+.interactButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
 }
 
-.postLeft{
-    display: flex;
-    flex-direction: column;
-    flex: 10;
-    align-items: start;
+.postLeft {
+  display: flex;
+  flex-direction: column;
+  flex: 10;
+  align-items: start;
 }
-.postLeftTop{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 80%;
-}
-
-.postLeftTopLeft{
-    display: flex;
-    align-items: center;
+.postLeftTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
 }
 
-.postLeftTopRight{
-    display: flex;
+.postLeftTopLeft {
+  display: flex;
+  align-items: center;
 }
 
-.postProfileImg{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    cursor: pointer;
+.postLeftTopRight {
+  display: flex;
 }
 
-.postUsername{
-    font-size: 15px;
-    font-weight: 500;
-    margin: 10px;
-    cursor: pointer;
+.postProfileImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
 }
 
-.postDate{
-    font-size: 12px;  
+.postUsername {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 10px;
+  cursor: pointer;
 }
 
-.postLeftCenter{
-    display: flex;
-    padding: 10px;
-    background-color: white;
-    border-radius: 30px;
-    width: 70%;
-    max-height: 60%;
-    margin-top: 10px;
-}
-.postLeftBottom{
-    display: flex;
-    align-items: center;
+.postDate {
+  font-size: 12px;
 }
 
-.playButton{
-    padding: 20px;
-    border-radius: 100%;
-    border-width: .5px;
-    position:relative;
-    left: 650%;
-    margin-top:440%;
-    background-color: rgba(0, 0, 0, 0);
-    cursor: pointer;
-    
-
+.postLeftCenter {
+  display: flex;
+  padding: 10px;
+  background-color: white;
+  border-radius: 30px;
+  width: 70%;
+  max-height: 60%;
+  margin-top: 10px;
+}
+.postLeftBottom {
+  display: flex;
+  align-items: center;
 }
 
-.playImg{
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    cursor: pointer;
+.playButton {
+  display: flex;
+  align-self: left;
+  padding: 20px;
+  border-radius: 100%;
+  border-width: 0.5px;
+  position: relative;
+  left: 650%;
+  margin-top: 440%;
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+.video {
+  display: flex;
+  align-self: center;
+  margin-left: -10%;
+}
+.playImg {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
 }
 
-.songLink{
-    margin: 25px;
-    margin-left: 20px;
+.songLink {
+  margin: 25px;
+  margin-left: 20px;
 }
 /*
 .postTop{

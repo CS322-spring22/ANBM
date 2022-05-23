@@ -2,10 +2,9 @@ import "./NavBar.css";
 import { Search, Person, Chat, Notifications } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import { useContext, useState, useRef } from "react";
+import { useContext, useState, useRef, useEffect } from "react";
 import Popup from "../Popup";
-import Share from "../share/Share";
-
+import Table from "../Table";
 
 import {
   PermMedia,
@@ -19,6 +18,8 @@ import {
   LeakAdd,
 } from "@material-ui/icons";
 import { axiosInstance, AxiosInstance } from "../../config";
+import axios from "axios";
+
 
 export default function NavBar() {
   const handleClick = (e) => {
@@ -27,10 +28,13 @@ export default function NavBar() {
   };
   const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-  const [modalOpen, setModalOpen] = useState(false);
+
   const [buttonPopup, setButtonPopup] = useState(false);
   const [file, setFile] = useState(null);
+  const [data, setData] = useState([])
   const desc = useRef();
+  
+  const [query, setQuery] = useState([]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -54,6 +58,15 @@ export default function NavBar() {
       window.location.reload();
     } catch (err) {}
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await axios.get(`https://band-cs322.herokuapp.com/api${query}`);
+      setData(res.data);
+    };
+    if (query.length === 0 || query.length > 2) fetchData();
+  }, [query]);
+
   return (
     <div className="NavBarContainer">
       <div className="NavBarLeft">
@@ -66,11 +79,9 @@ export default function NavBar() {
           <Search className="searchIcon" />
           <input
             placeholder="Search for friends, songs, or artists"
-            className="searchInput"/>
-            <ul className="list">
-              
-
-            </ul>
+            className="searchInput" 
+            onChange={(e) => setQuery(e.target.value.toLowerCase())}/>
+            {<Table data={data} />}
         </div>
       </div>
       <div className="NavBarRight">

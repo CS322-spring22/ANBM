@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext, useState, useRef, useEffect } from "react";
 import Popup from "../Popup";
-import Table from "../Table";
+// import Table from "../Table";
+// import {User} from mongoose;
+
 
 import {
   PermMedia,
@@ -36,6 +38,8 @@ export default function NavBar() {
   
   const [query, setQuery] = useState([]);
 
+
+
   const submitHandler = async (e) => {
     e.preventDefault();
     const newPost = {
@@ -59,13 +63,13 @@ export default function NavBar() {
     } catch (err) {}
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await axios.get(`https://band-cs322.herokuapp.com/api${query}`);
-      setData(res.data);
-    };
-    if (query.length === 0 || query.length > 2) fetchData();
-  }, [query]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const res = await axios.get(`http://localhost:8800/api${query}`);
+  //     setData(res.data);
+  //   };
+  //   if (query.length === 0 || query.length > 2) fetchData();
+  // }, [query]);
 
   return (
     <div className="NavBarContainer">
@@ -76,13 +80,22 @@ export default function NavBar() {
       </div>
       <div className="NavBarCenter">
         <div className="searchbar">
-          <Search className="searchIcon" />
-          <input
+        <input 
             placeholder="Search for friends, songs, or artists"
             className="searchInput" 
             onChange={(e) => setQuery(e.target.value.toLowerCase())}/>
-            {<Table data={data} />}
-        </div>
+           <ul className="list">
+        {Users.filter((asd) =>
+          asd.username.toLowerCase().includes(query)
+        ).map((user) => (
+          <li className="listItem" key={user.id}>
+            {user.username}
+          </li>
+        ))}
+      </ul>
+          <Search className="searchIcon" />
+          
+        </div> 
       </div>
       <div className="NavBarRight">
         <div className="NavBarLinks">

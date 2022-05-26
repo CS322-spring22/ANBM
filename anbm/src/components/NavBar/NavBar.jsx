@@ -89,13 +89,13 @@ export default function NavBar() {
             className="searchInput" 
             onChange={(e) => setQuery(e.target.value.toLowerCase())}/>
            <ul className="list">
-        {Users.filter((asd) =>
+        {/* {Users.filter((asd) =>
           asd.username.toLowerCase().includes(query)
         ).map((user) => (
           <li className="listItem" key={user.id}>
             {user.username}
           </li>
-        ))}
+        ))} */}
       </ul>
           <Search className="searchIcon" />
           

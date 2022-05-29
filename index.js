@@ -17,7 +17,6 @@ mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true }, () => {
 });
 
 app.use("/images", express.static(path.join(__dirname, "public/images")));
-
 //middleware
 app.use(express.json());
 app.use(helmet());
@@ -25,13 +24,12 @@ app.use(morgan("common"));
 app.use(cors());
 
 const storage = multer.diskStorage({
-    destination:(reg,file,cb)=>{
-        cb(null,"public/images");
-    },
-    filename: (req,file,cb)=>{
-        cb(null,req.body.name);
-    },
-   
+  destination: (reg, file, cb) => {
+    cb(null, "public/images");
+  },
+  filename: (req, file, cb) => {
+    cb(null, req.body.name);
+  },
 });
 
 const upload = multer({ storage });
@@ -46,7 +44,6 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/posts", postRoute);
-
 
 app.use(express.static(path.join(__dirname, "/anbm/build")));
 

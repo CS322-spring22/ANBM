@@ -86,14 +86,7 @@ export default function Post({ post }) {
           </div>
           <div className="postLeftBottom">
             <div className="play">
-              <button className="playButton">
-                <PowerSettingsNew
-                  style={{
-                    fontSize: 30,
-                    backgroundColor: "",
-                  }} /* onClick={likeHandler}*/
-                />
-              </button>
+              
             </div>
             <div className="video">
               <ReactPlayer url={post?.img} controls={true} />
@@ -101,9 +94,6 @@ export default function Post({ post }) {
           </div>
         </div>
         <div className="postRight">
-          <div className="postRightTop">
-            <img className="albumImg" src={PF + post.img} alt="" />
-          </div>
           <div className="postRightBottom">
             <div className="interactButton">
               <ThumbUp style={{ fontSize: 25 }} onClick={likeHandler} />

@@ -1,0 +1,12 @@
+{
+  "prod": {
+    "default-src": ["*"],
+    "script-src-elem": ["*", "https://www.youtube.com/iframe_api"],
+    "script-src": ["*", "'unsafe-inline'"],
+    "font-src": ["'self'", "*"],
+    "style-src": ["*", "'unsafe-inline'"],
+    "connect-src": ["'self'", "*"],
+    "img-src": ["'self'", "*"],
+    "child-src": ["*"]
+  }
+}
